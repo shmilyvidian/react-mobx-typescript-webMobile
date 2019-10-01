@@ -1,6 +1,7 @@
-FROM nginx:latest
-COPY build/ /usr/share/nginx/html/
-RUN rm /etc/nginx/conf.d/nginx.conf
-ADD nginx.conf /etc/nginx/conf.d/
-
-RUN /bin/bash -c 'echo init ok!!!'
+FROM node:6.10.3-slim
+RUN apt-get update \    && apt-get install -y nginx
+WORKDIR /app
+COPY . /app/
+EXPOSE 80
+RUN  npm install \     && npm run build \     && cp -r build/* /var/www/html \     && rm -rf /app
+CMD ["nginx","-g","daemon off;"]
