@@ -6,31 +6,27 @@ import {
 } from 'react-router-dom';
 import 'antd-mobile/dist/antd-mobile.css';
 import './App.scss';
-import { NavBar, Icon ,Tabs} from 'antd-mobile';
+import { NavBar, Icon } from 'antd-mobile';
 
-const tabs2 = [
-  { title: 'First Tab', sub: '1' },
-  { title: 'Second Tab', sub: '2' },
-  { title: 'Third Tab', sub: '3' },
-];
+
 class AppFrame extends React.Component <any, {}>{
   constructor(props:any) {
     super(props);
   }
-   
+
 
   public renderChildRoute(childRoute:any, props:object){
     return (
-    <childRoute.component 
+    <childRoute.component
       // containHeight={homeStore.height}
       // defaultHeight={homeStore.height - 93}
       name={childRoute.name} {...props}
       // tHeight = {homeStore.tHeight}
       // collapsed={homeStore.collapsed}
     />)
-     
+
   }
-  
+
   public render() {
     const props = this.props;
     try {
@@ -59,7 +55,7 @@ class AppFrame extends React.Component <any, {}>{
               >NavBar</NavBar>
             </div>
             <Switch>
-              {props.routes.map((childRoute:any, index:number) => (<Route 
+              {props.routes.map((childRoute:any, index:number) => (<Route
                     key={index}
                     path={childRoute.path}
                     render={ this.renderChildRoute.bind(this,childRoute, props) }
@@ -67,21 +63,7 @@ class AppFrame extends React.Component <any, {}>{
                 )}
             </Switch>
             </div>
-              <Tabs tabs={tabs2}
-                initialPage={1}
-                tabBarPosition="bottom"
-                renderTab={tab => <span>{tab.title}</span>}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '150px', backgroundColor: '#fff' }}>
-                  Content of first tab
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '150px', backgroundColor: '#fff' }}>
-                  Content of second tab
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '150px', backgroundColor: '#fff' }}>
-                  Content of third tab
-                </div>
-              </Tabs>
+
       </div>
       );
     } catch(e) {
