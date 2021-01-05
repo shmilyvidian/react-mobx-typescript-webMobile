@@ -7,7 +7,7 @@
     "@types/react-router-dom": "^4.3.1",
     "antd-mobile": "^2.2.6",
     "autoprefixer": "7.1.6",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "babel-jest": "20.0.3",
     "babel-loader": "7.1.2",
     "babel-plugin-import": "^1.10.0",
